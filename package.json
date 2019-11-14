@@ -1,0 +1,32 @@
+{
+  "name": "marvel-stories",
+  "version": "1.0.0",
+  "description": "List of stories with my favorite heroes",
+  "main": "index.ts",
+  "scripts": {
+    "test": "run test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lucasvschenatto/marvel-stories.git"
+  },
+  "keywords": [
+    "marvel",
+    "hero",
+    "story",
+    "API"
+  ],
+  "author": "Lucas Schenatto",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/lucasvschenatto/marvel-stories/issues"
+  },
+  "homepage": "https://github.com/lucasvschenatto/marvel-stories#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "@types/express": "^4.17.2",
+    "typescript": "^3.7.2"
+  }
+}
