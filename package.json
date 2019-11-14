@@ -5,7 +5,8 @@
   "main": "index.ts",
   "scripts": {
     "test": "run test",
-    "build": "tsc"
+    "build": "tsc",
+    "start": "ts-node src/index.ts"
   },
   "keywords": [
     "marvel",
