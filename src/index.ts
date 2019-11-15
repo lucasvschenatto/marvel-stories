@@ -35,8 +35,10 @@ app.get('/',(_,res)=>{
     .then(charactersIds=>{
         request(
             `http://gateway.marvel.com/v1/public/stories?apikey=${publicKey}&ts=${timestamp}&hash=${hash}&characters=${charactersIds.join(',')}&limit=${storiesQuantity}`,
-            (error, _, body)=>{
-                res.send(body)
+            (error, _, bodyString)=>{
+                const body = JSON.parse(bodyString) as types.Response<types.Story>
+                const titles = body.data.results.map<string>(story=>story.title)
+                res.send(titles)
                 if(error){
                     console.log(error)
                 }
