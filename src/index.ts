@@ -2,6 +2,7 @@ import express from 'express'
 import request from 'request'
 import APIKeys from './APIKeys'
 import UserPreferences from './UserPreferences'
+import * as types from './Types'
 import {Md5} from 'ts-md5'
 
 
@@ -12,8 +13,8 @@ const md5 = new Md5()
 const hash = md5.appendStr(timestamp).appendStr(privateKey).appendStr(publicKey).end()
 let characters:string[] = []
 
-const getHeroId = (hero:string):Promise<string> =>{
-    return new Promise<string>((resolve,reject)=>{
+const getHeroId = (hero:string):Promise<number> =>{
+    return new Promise<number>((resolve,reject)=>{
         request(
             `http://gateway.marvel.com/v1/public/characters?name=${hero}&apikey=${publicKey}&ts=${timestamp}&hash=${hash}`,
             (error, _, bodyString)=>{
@@ -21,7 +22,7 @@ const getHeroId = (hero:string):Promise<string> =>{
                     console.log(error)
                     reject(error)
                 }
-                const body = JSON.parse(bodyString)
+                const body = JSON.parse(bodyString) as types.Response<types.Character>
                 resolve(body.data.results[0].id)
         })
     })
