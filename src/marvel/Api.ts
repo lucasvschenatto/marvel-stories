@@ -1,18 +1,9 @@
 import request from 'request'
 import * as types from './Types'
-import {Md5} from 'ts-md5'
-import APIKeys from './APIKeys.json'
+import APIKeys from '../../APIKeys.json'
+import { createTimestamp, createHash } from '../utils'
 
 const {publicKey, privateKey} = APIKeys
-
-function createHash (timestamp:string,privateKey:string, publicKey:string):string {
-    const md5 = new Md5()
-    return md5.appendStr(timestamp).appendStr(privateKey).appendStr(publicKey).end().toString()
-}
-
-function createTimestamp ():string {
-    return Date.now().toString()
-}
 
 function getCharacterIds (names:string[]):Promise<number[]> {
     return Promise.all(names.map(getCharacterId))

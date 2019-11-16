@@ -1,7 +1,7 @@
 import express from 'express'
 import path from 'path'
-import settings from './settings.json'
-import * as marvel from './marvel'
+import settings from './../settings.json'
+import * as marvel from './marvel/Api'
 
 
 const app = express()
