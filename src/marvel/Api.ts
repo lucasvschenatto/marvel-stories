@@ -1,7 +1,7 @@
 import request from 'request'
 import * as types from './Types'
 import APIKeys from '../../APIKeys.json'
-import { createTimestamp, createHash } from '../utils'
+import { createTimestamp, createHash } from './utils'
 
 const {publicKey, privateKey} = APIKeys
 

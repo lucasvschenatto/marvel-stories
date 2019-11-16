@@ -21,6 +21,6 @@ app.get('/stories', async (req,res)=>{
     }
 })
 
-app.listen(8000,()=>{
-    console.log(`[MARVEL-STORIES] Running at http://localhost:8000`)
+app.listen(settings.port,()=>{
+    console.log(`[MARVEL-STORIES] Running at http://localhost:${settings.port}`)
 })
