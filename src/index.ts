@@ -1,9 +1,9 @@
 import express from 'express'
 import path from 'path'
-import UserPreferences from './UserPreferences'
-import * as marvelApi from './MarvelApi'
+import settings from './settings'
+import * as marvel from './marvel'
 
-const {storiesQuantity, heroes} = UserPreferences
+const {storiesQuantity, heroes} = settings
 
 const app = express()
 
@@ -11,8 +11,8 @@ app.use(express.static( path.join(__dirname,'public') ))
 
 app.get('/stories', async (_,res)=>{
     try{
-        const ids = await marvelApi.getCharacterIds(heroes)
-        const stories = await marvelApi.getStories(ids,storiesQuantity)
+        const ids = await marvel.getCharacterIds(heroes)
+        const stories = await marvel.getStories(ids,storiesQuantity)
         res.send(stories)
     }
     catch(error){
