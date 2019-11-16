@@ -1,6 +1,6 @@
 import express from 'express'
 import path from 'path'
-import settings from './settings'
+import settings from './settings.json'
 import * as marvel from './marvel'
 
 const {storiesQuantity, heroes} = settings

@@ -1,8 +1,7 @@
 import request from 'request'
 import * as types from './Types'
 import {Md5} from 'ts-md5'
-import APIKeys from './APIKeys'
-import UserPreferences from './settings'
+import APIKeys from './APIKeys.json'
 
 const createHash = (timestamp:string,privateKey:string, publicKey:string):string =>{
     const md5 = new Md5()
