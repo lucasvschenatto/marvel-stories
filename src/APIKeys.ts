@@ -1,0 +1,4 @@
+export default {
+    publicKey: 'Enter your public key here',
+    privateKey: 'Enter your private key here'
+}
