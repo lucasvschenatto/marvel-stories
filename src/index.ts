@@ -1,5 +1,6 @@
 import express from 'express'
 import request from 'request'
+import path from 'path'
 import APIKeys from './APIKeys'
 import UserPreferences from './UserPreferences'
 import * as types from './Types'
@@ -34,7 +35,9 @@ const getCharacterIds = async (names:string[]):Promise<number[]>=>{
 
 const app = express()
 
-app.get('/', async(_,res)=>{
+app.use(express.static( path.join(__dirname,'public') ))
+
+app.get('/stories', async(_,res)=>{
     const charactersIds = await getCharacterIds(heroes)
     request(
         `http://gateway.marvel.com/v1/public/stories?apikey=${publicKey}&ts=${timestamp}&hash=${hash}&characters=${charactersIds.join(',')}&limit=${storiesQuantity}`,
@@ -49,5 +52,5 @@ app.get('/', async(_,res)=>{
 })
 
 app.listen(8000,()=>{
-    console.log(`[SERVER] Running at http://localhost:8000`)
+    console.log(`[MARVEL-STORIES] Running at http://localhost:8000`)
 })
