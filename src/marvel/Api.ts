@@ -19,9 +19,12 @@ function getCharacterId (hero:string):Promise<number> {
                 if(error){
                     console.log(error)
                     reject(error)
+                }else if(response.statusCode === 401){
+                    reject(response.body)
+                }else{
+                    const body = JSON.parse(response.body) as types.Response<types.Character>
+                    resolve(body.data.results[0].id)
                 }
-                const body = JSON.parse(response.body) as types.Response<types.Character>
-                resolve(body.data.results[0].id)
         })
     })
 }
@@ -37,10 +40,13 @@ function getStories (charactersIds:number[],quantity:number):Promise<string[]> {
                 if(error){
                     console.log(error)
                     reject(error)
+                }else if(response.statusCode === 401){
+                    reject(response.body)
+                }else{
+                    const body = JSON.parse(response.body) as types.Response<types.Story>
+                    const titles = body.data.results.map<string>(story=>story.title)
+                    resolve(titles)
                 }
-                const body = JSON.parse(response.body) as types.Response<types.Story>
-                const titles = body.data.results.map<string>(story=>story.title)
-                resolve(titles)
         })
     })
 }

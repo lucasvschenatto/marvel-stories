@@ -12,5 +12,8 @@ function loadStories(){
         response.data.forEach(appendListItem)
         loadingElement.hidden = true
 
-    }).catch(error => console.log(error))
+    }).catch(error => {
+        console.log(error)
+        window.alert("Erro, verifique se as chaves da API estão configuradas.")
+    })
 }
