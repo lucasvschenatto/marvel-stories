@@ -16,7 +16,7 @@
   ],
   "author": "Lucas Schenatto",
   "dependencies": {
-    "express": "^4.17.1",
+    "express": "^4.17.3",
     "request": "^2.88.0",
     "ts-md5": "^1.2.7"
   },
